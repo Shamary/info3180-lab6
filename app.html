@@ -7,12 +7,19 @@
         <script>
             var app=angular.module("myShoppingList",[]);
             app.controller("myCtrl",function($scope){
-               $scope.products=["Milk","Bread","Cheese"]; 
+               $scope.products=["Milk","Bread","Cheese"];
+               $scope.addItem=function(){
+                 $scope.products.push($scope.add);  
+               };
             });
         </script>
         
         <div ng-app="myShoppingList" ng-controller="myCtrl">
-            <li ng-repeat="x in products">{{x}}</li>
+            <ul>
+                <li ng-repeat="x in products">{{x}}</li>
+            </ul>
+            <input type="text" name="" ng-model="add"/>
+            <button ng-click="addItem()">Add</button>
         </div>
     </body>
 </html>
