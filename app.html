@@ -9,7 +9,16 @@
             app.controller("myCtrl",function($scope){
                $scope.products=["Milk","Bread","Cheese"];
                $scope.addItem=function(){
-                 $scope.products.push($scope.add);  
+                 $scope.errortext="";
+                 if(!$scope.add){return;}
+                 if($scope.products.indexOf($scope.add)==-1)
+                 {
+                    $scope.products.push($scope.add);
+                 }
+                 else
+                 {
+                     $scope.errortext="Item already in list.";
+                 }
                };
                $scope.removeItem=function(x)
                {
@@ -24,6 +33,8 @@
             </ul>
             <input type="text" name="" ng-model="add"/>
             <button ng-click="addItem()">Add</button>
+            
+            <p>{{errortext}}</p>
         </div>
     </body>
 </html>
